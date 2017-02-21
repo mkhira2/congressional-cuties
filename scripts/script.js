@@ -3,6 +3,8 @@ var getLegislatorData = function(sunlightObj) {
     legislatorStr += '<div class="legislator">' + '<h1 class="name">' + sunlightObj.first_name + ' ' + sunlightObj.last_name + '</h1>'
     legislatorStr += '<h2 class="partyAndState">' + sunlightObj.title + ' -- ' + sunlightObj.party + '-' + sunlightObj.state_name + '</h2>'
     legislatorStr += '<ul class="contact">'
+
+    // if sunlightObj.* is truthy (has value), proceed with code. if falsy (null/undefined), skip building the line
     if (sunlightObj.office) {
         legislatorStr += '<li>' + 'email: ' + sunlightObj.oc_email + '</li>'
     }
@@ -24,16 +26,16 @@ var getLegislatorData = function(sunlightObj) {
 }
 
 var handleResponse = function(apiResponse) {
-    var stringHTML = ''
-    var containerNode = document.querySelector('.container')
+    var stringHTML = '' // create blank slate to build text
+    var containerNode = document.querySelector('.container') // grab container node
 
-    for (var i = 0; i < apiResponse.results.length; i++) {
-        stringHTML += getLegislatorData(apiResponse.results[i])
+    for (var i = 0; i < apiResponse.results.length; i++) { // for every iteration through api responses...
+        stringHTML += getLegislatorData(apiResponse.results[i]) // ... add to string w/ legislator data using above function
     }
-    containerNode.innerHTML = stringHTML
+    containerNode.innerHTML = stringHTML    // build string
 }
 
 
-var promise = $.getJSON('https://congress.api.sunlightfoundation.com/legislators/')
+var promise = $.getJSON('https://congress.api.sunlightfoundation.com/legislators') // returns sunlight info in JSON format
 
-promise.then(handleResponse)
+promise.then(handleResponse) // returns promise
