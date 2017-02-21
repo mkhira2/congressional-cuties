@@ -20,8 +20,6 @@ var getLegislatorData = function(sunlightObj) {
     legislatorStr += '</ul>'
     legislatorStr += '<h3 class="term_end">' + sunlightObj.term_end + '</h3>' + '</div>'
 
-    console.log(sunlightObj)
-
     return legislatorStr
 }
 
@@ -36,6 +34,6 @@ var handleResponse = function(apiResponse) {
 }
 
 
-var promise = $.getJSON('https://congress.api.sunlightfoundation.com/legislators?apikey=123') // returns sunlight info in JSON format
+var promise = $.get('https://congress.api.sunlightfoundation.com/legislators?apikey=123&callback=?') // returns sunlight info in JSON format
 
 promise.then(handleResponse) // returns promise
