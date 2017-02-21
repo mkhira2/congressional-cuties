@@ -1,0 +1,31 @@
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.legislator {
+	background: darkseagreen;
+	width: 30%;
+	padding: 1%;
+	margin: 1%;
+}
+
+h1 {
+	font-size: 24px;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+h3 {
+	font-size: 12px;
+}
+
+p {
+	font-size: 14px;
+}
